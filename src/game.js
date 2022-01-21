@@ -4,26 +4,22 @@ let playerOrder = [];
 let level = 0;
 let correct;
 let score = 0;
-let win = false;
 let started = false;
 
 const highScore = localStorage.getItem("highScore");
 if (!highScore) {
-  highScore = 0;
+  localStorage.setItem("highScore", 0);
+  document.querySelector("#high-score").innerHTML = `HighScore: 0`;
+} else {
+  document.querySelector("#high-score").innerHTML = `HighScore: ${highScore}`;
 }
-document.querySelector("#high-score").innerHTML = `HighScore: ${highScore}`;
 
 const startButton = document.querySelector(".start-button");
 
 startButton.addEventListener("click", () => {
-  if (!started) {
-    startButton.remove();
+  startButton.classList.add("hidden");
 
-    setTimeout(() => {
-      clearGame();
-    }, 600);
-  } else {
-  }
+  clearGame();
 });
 
 const topLeft = document.getElementById("sound1");
@@ -76,20 +72,27 @@ bottomRight.addEventListener("click", (event) => {
 
 function playSound(soundNumber) {
   const audio = {
-    sound1: "/sounds/beep1.ogg",
-    sound2: "/sounds/beep2.ogg",
-    sound3: "/sounds/beep3.ogg",
-    sound4: "/sounds/beep4.ogg",
+    sound1: "/sounds/beep1.flac",
+    sound2: "/sounds/beep2.flac",
+    sound3: "/sounds/beep3.flac",
+    sound4: "/sounds/beep4.flac",
   };
 
   let beat = new Audio(audio[soundNumber]);
   beat.play();
 }
 
+function setDomScore(updatedScore) {
+  document.querySelector("#score").innerHTML = updatedScore;
+}
+
 function clearGame() {
   npcOrder = [];
-  humanOrder = [];
+  playerOrder = [];
   level = 1;
+  score = 0;
+  setDomScore(score);
+
   showMoves();
 }
 
@@ -105,8 +108,6 @@ function showMoves() {
   const intervalID = setInterval(() => {
     // wenn der index kleiner ist als die levelzahl/
     if (index < level) {
-      console.log("NPC:", npcOrder);
-
       const flash = document.getElementById(npcOrder[index]);
       flash.classList.add("shine");
       setTimeout(() => {
@@ -130,16 +131,30 @@ function showMoves() {
 function checkMoves() {
   if (npcOrder.join() === playerOrder.join()) {
     score += 10;
-    document.querySelector("#score").innerHTML = score;
+    setDomScore(score);
     nextRound();
   } else {
     const highScore = localStorage.getItem("highScore");
     if (highScore < score) {
       localStorage.setItem("highScore", score);
     }
+
+    startButton.classList.remove("hidden");
+
+    // const restartButton = document.createElement("button");
+    // restartButton.innerHTML = "Start Again";
+
+    // restartButton.onclick = () => location.reload();
+    // restartButton.setAttribute("id", "restart-button-style");
+
+    // const restartDIV = document.getElementById("restart-div");
+    // restartDIV.appendChild(restartButton);
+
     alert(`Your score was: ${score}`);
 
-    console.log("Player", playerOrder);
+    setTimeout(() => {
+      console.log("timeout");
+    }, 2000);
   }
 }
 
@@ -152,9 +167,9 @@ function nextRound() {
   console.log(npcOrder);
 }
 
-document.addEventListener("keyup", (e) => {
-  if (e.code === "ArrowUp") {
-    document.querySelector("h1").innerHTML = "Mir Is The Best ";
-    document.querySelector("#score").innerHTML = "Mir score is 10000000";
-  }
-});
+// document.addEventListener("keyup", (e) => {
+//   if (e.code === "ArrowUp") {
+//     document.querySelector("h1").innerHTML = "Marc Is The Best ";
+//     document.querySelector("#score").innerHTML = "Marc score is 10000000";
+//   }
+// });
