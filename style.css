@@ -1,6 +1,9 @@
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: grey;
+  background-image: url(stars-star-gazing.gif);
 }
 
 h1 {
@@ -19,18 +22,17 @@ h1 {
   border: 3px solid black;
   display: flex;
   flex-direction: column;
-
+  height: 100vh;
   align-items: center;
-  margin-top: 40px;
+  justify-content: center;
 }
 
 .start-button {
   position: absolute;
 }
 
-body {
-  background-color: grey;
-  background-image: url(stars-star-gazing.gif);
+.hidden {
+  display: none;
 }
 
 .button {
@@ -79,8 +81,8 @@ body {
 @media screen and (max-width: 550px) {
   .test {
     border: 5px solid black;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
   .start-button-image {
     width: 400px;
