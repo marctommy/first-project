@@ -83,7 +83,7 @@ function playSound(soundNumber) {
 }
 
 function setDomScore(updatedScore) {
-  document.querySelector("#score").innerHTML = updatedScore;
+  document.querySelector("#score").innerHTML = `Current: ${updatedScore}`;
 }
 
 function clearGame() {

@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NOMIS</title>
+    <title>Push the buttons</title>
     <link rel="stylesheet" href="style.css" />
-
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -17,10 +17,12 @@
   <body>
     <div class="float-container">
       <div class="row">
-        <div><h1>Simon 2022</h1></div>
+        <div><h3>game version 1.0</h3></div>
 
-        <div><h4 id="score"></h4></div>
-        <div><h4 id="high-score">HighScore:</h4></div>
+        <div class="header-style">
+          <h4 id="high-score">HighScore:</h4>
+          <h4 id="score">Current:</h4>
+        </div>
       </div>
 
       <div class="start-button">
@@ -43,6 +45,7 @@
         <div class="button test" id="sound4"></div>
       </div>
     </div>
+
     <script src="./src/game.js"></script>
 
     <script

@@ -13,6 +13,10 @@ h1 {
   color: white !important;
 }
 
+.mobile {
+  padding: 50px;
+}
+
 .headline {
   font-size: 550px;
 }
@@ -78,14 +82,22 @@ h1 {
   background-color: rgb(17, 138, 178, 0.7);
 }
 
+.header-style {
+  background: rgb(39, 38, 38, 0.8);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 40px;
+  color: antiquewhite;
+}
+
 @media screen and (max-width: 550px) {
   .test {
     border: 5px solid black;
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
   }
   .start-button-image {
-    width: 400px;
+    width: 350px;
   }
 }
 
