@@ -72,10 +72,10 @@ bottomRight.addEventListener("click", (event) => {
 
 function playSound(soundNumber) {
   const audio = {
-    sound1: "/sounds/beep1.flac",
-    sound2: "/sounds/beep2.flac",
-    sound3: "/sounds/beep3.flac",
-    sound4: "/sounds/beep4.flac",
+    sound1: "/assets/beep1.flac",
+    sound2: "/assets/beep2.flac",
+    sound3: "/assets/beep3.flac",
+    sound4: "/assets/beep4.flac",
   };
 
   let beat = new Audio(audio[soundNumber]);
